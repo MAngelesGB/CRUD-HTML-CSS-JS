@@ -7,7 +7,11 @@ btnSearch.addEventListener("click", ()=>{
   song.generateTable(result);
 
   if(result.length > 0)
+  {
     activeElementBtnDelete();
+    activeElementBtnUpdate();
+    saveSong();
+  }
 });
 
 
@@ -23,3 +27,37 @@ const activeElementBtnDelete = () => {
     }); 
   });
 }
+
+
+const activeElementBtnUpdate = () => {
+  const btnUpdate = document.querySelectorAll(".btnUpdate");
+  btnUpdate.forEach(element => {
+    element.addEventListener("click", ()=>{
+      //retira el readonly o lo pone(toggle) de los input
+      element.parentElement.parentElement.querySelectorAll("input[type='text']").forEach((element) => {
+        element.toggleAttribute("disabled");
+      }); 
+    }); 
+  });
+}
+
+const saveSong = () => {
+  const btnSave = document.querySelectorAll(".btnSave");
+  btnSave.forEach(element => {
+    element.addEventListener("click", ()=>{
+
+        let code = element.parentElement.parentElement.querySelector(".tdCode").innerHTML;
+        let name = element.parentElement.parentElement.querySelector(".inputName").value;
+        let artist = element.parentElement.parentElement.querySelector(".inputArtist").value;
+        let album = element.parentElement.parentElement.querySelector(".inputAlbum").value;
+        let genre = element.parentElement.parentElement.querySelector(".inputGenre").value;
+        song.updateSong(parseInt(code), name, artist, album, genre);
+      
+      element.parentElement.parentElement.querySelectorAll("input[type='text']").forEach((element) => {
+
+        element.setAttribute("disabled", true);
+      }); 
+    }); 
+  });
+}
+

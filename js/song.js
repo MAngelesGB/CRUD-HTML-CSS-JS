@@ -3,17 +3,12 @@
 //Unicamente tiene set y get
 
 class Song{
-  static lastCode = 0; 
   constructor(name, artist, album, genre){
-    this.code = Song.generateCode(); 
+    this.code = 1; 
     this.name = name; 
     this.artist = artist; 
     this.album = album;
     this.genre = genre;
-  }
-
-  static generateCode (){
-    return this.lastCode++;
   }
 
   get getName(){
@@ -54,7 +49,7 @@ class Song{
     const songs = JSON.parse(localStorage.getItem("songs")) ?? [];
     if(songs.length > 0){
       //Se obtiene el ultimo codigo y se le suma 1
-      addSong.lastCode = songs[songs.length - 1].code + 1;
+      addSong.code = songs[songs.length - 1].code + 1;
     }
     //Agrega el objeto al array
     songs.push(addSong);
@@ -75,8 +70,17 @@ class Song{
 
   }
 
-  updateSong(name, artist, album, genre){
-  
+  updateSong(code, name, artist, album, genre){
+    //Se obtiene el array de objetos
+    const songs = JSON.parse(localStorage.getItem("songs"));
+    //Obtiene el indice del objeto que se quiere modificar
+    let index = songs.findIndex(song => song.code === code);
+    songs[index].name = name;
+    songs[index].artist = artist;
+    songs[index].album = album;
+    songs[index].genre = genre;
+    //setea el array en el storage con el objeto modificado. stringify convierte un objeto a un string
+    localStorage.setItem("songs", JSON.stringify(songs));
   }
 
   deleteSong(codeSong){
@@ -94,10 +98,17 @@ class Song{
 
     result.forEach(song => {
       const tr = document.createElement("tr");
-      tr.innerHTML = `<td>${song.code}</td><td>${song.name}</td><td>${song.artist}</td>
-      <td>${song.album}</td><td>${song.genre}</td>
+      tr.innerHTML = `
+      <td class = "tdCode">${song.code}</td>
+
+      <td><input disabled class="inputName" type = "text" value = "${song.name}"></td>
+      <td><input disabled class="inputArtist" type = "text" value = "${song.artist}"></td>
+      <td><input disabled class="inputAlbum" type = "text" value = "${song.album}"></td>
+      <td><input disabled class="inputGenre" type = "text" value = "${song.genre}"></td>
+
       <td><input type = "button" class="btnDelete" value = "Eliminar"></td>
-      <td><input type = "button" class="btnUpdate" value = "Modificar"></td>`;
+      <td><input type = "button" class="btnUpdate" value = "Modificar"></td>
+      <td><input type = "button" class="btnSave" value = "Guardar"></td>`;
       tbody.appendChild(tr);
     });
   }
