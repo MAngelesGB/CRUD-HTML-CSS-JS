@@ -9,16 +9,10 @@
   </head>
   <body>
     <div>
-      <label for="search">Buscar:</label>
-      <input type="text" id="txtNameSong" name="NameSong" required>
-      <input type = "button" id="btnSearch" value = "Buscar">
-
-      <input type="number" id="txtCode" name="code" required>
-      <input type = "button" id="btnDelete" value = "Eliminar">
-    </div>
-    <div>
       <form>
         <legend>Ingresa un registro</legend> 
+
+        <input type="hidden" id="txtCode" name="code" required>
 
         <label for="name">Nombre</label>
         <input type="text" id="txtName" name="name" required>
@@ -30,11 +24,11 @@
         <input type="album" id="txtAlbum" name="album" required>
 
         <label for="genre">Genero</label>
-        <input type="genre" id="txtGenre" name="name" required>
+        <input type="genre" id="txtGenre" name="genre" required>
 
         <br>
 
-        <input type = "button" id="btnAdd" value = "Agregar">
+        <input type = "button" id="btnSave" value = "Guardar">
       </form> 
     </div>
     <div id = "divDetalles">
