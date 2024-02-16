@@ -24,6 +24,7 @@ const activeElementBtnDelete = () => {
       let codeSong = element.parentElement.parentElement.firstChild.innerHTML; 
       song.deleteSong(parseInt(codeSong));
       btnSearch.click();
+      alert("Cancion eliminada");
     }); 
   });
 }
@@ -51,12 +52,20 @@ const saveSong = () => {
         let artist = element.parentElement.parentElement.querySelector(".inputArtist").value;
         let album = element.parentElement.parentElement.querySelector(".inputAlbum").value;
         let genre = element.parentElement.parentElement.querySelector(".inputGenre").value;
-        song.updateSong(parseInt(code), name, artist, album, genre);
-      
-      element.parentElement.parentElement.querySelectorAll("input[type='text']").forEach((element) => {
 
-        element.setAttribute("disabled", true);
-      }); 
+        let empty= emptyValidation(name, artist, album, genre)
+        let sameSong = sameSongValidation(name);
+        if (!empty)
+          alert("Campos vacios. Ingrese lo que se le pide");
+        if(sameSong)
+          alert("La cancion ya existe. Ingrese otra.");  
+        else{
+          song.updateSong(parseInt(code), name, artist, album, genre);
+          element.parentElement.parentElement.querySelectorAll("input[type='text']").forEach((element) => {
+            element.setAttribute("disabled", true);
+            alert("Cancion actualizada");
+          });
+        } 
     }); 
   });
 }
