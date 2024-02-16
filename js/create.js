@@ -7,7 +7,7 @@ btnAdd.addEventListener("click",()=>{
   let album = document.getElementById("txtAlbum").value;
   let genre = document.getElementById("txtGenre").value;
   let empty= emptyValidation(name, artist, album, genre)
-  let sameSong = sameSongValidation(name);
+  let sameSong = sameSongValidationCreate(name);
   if (!empty)
     alert("Campos vacios. Ingrese lo que se le pide");
   if(sameSong)

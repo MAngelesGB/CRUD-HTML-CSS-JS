@@ -54,7 +54,7 @@ const saveSong = () => {
         let genre = element.parentElement.parentElement.querySelector(".inputGenre").value;
 
         let empty= emptyValidation(name, artist, album, genre)
-        let sameSong = sameSongValidation(name);
+        let sameSong = sameSongValidationUpdate(name,parseInt(code));
         if (!empty)
           alert("Campos vacios. Ingrese lo que se le pide");
         if(sameSong)
@@ -63,8 +63,8 @@ const saveSong = () => {
           song.updateSong(parseInt(code), name, artist, album, genre);
           element.parentElement.parentElement.querySelectorAll("input[type='text']").forEach((element) => {
             element.setAttribute("disabled", true);
-            alert("Cancion actualizada");
           });
+          alert("Cancion actualizada");
         } 
     }); 
   });

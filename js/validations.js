@@ -9,11 +9,22 @@ function emptyValidation(name, artist, album, genre) {
   }
 }
 
-function sameSongValidation(name){
+function sameSongValidationCreate(name){
   //Obtiene la lista de objetos con la llave songs
   let songs = JSON.parse(localStorage.getItem("songs"));
   for (let i = 0; i < songs.length; i++) {
     if (songs[i].name === name) {
+      return true;
+    }
+  }
+  
+}
+
+function sameSongValidationUpdate(name,cod){
+  //Obtiene la lista de objetos con la llave songs
+  let songs = JSON.parse(localStorage.getItem("songs"));
+  for (let i = 0; i < songs.length; i++) {
+    if (songs[i].name === name && songs[i].code !== cod) {
       return true;
     }
   }
