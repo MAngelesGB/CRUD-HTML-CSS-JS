@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./js/song.js"></script>
+    <link rel="stylesheet" href="./css/styles.css" />
     <title>Document</title>
   </head>
   <body>
-    <div>
-      <label for="search">Buscar:</label>
-      <input type="text" id="txtNameSong" name="NameSong" required>
-      <input type = "button" id="btnSearch" value = "Buscar">
+    <div class="containerSearch">
+      <div>
+        <label for="search">Buscar:</label>
+        <input type="text" id="txtNameSong" name="NameSong" required />
+        <input type="button" id="btnSearch" value="Buscar" />
 
-      <a href="./create.html">Agregar</a>
+        <a class="button" href="./create.html">Agregar</a>
+      </div>
     </div>
-    <div>
-      <table id = "tableSong">
+    <div class="containerSongs">
+      <table id="tableSong">
         <thead>
           <tr>
             <th>Codigo</th>
@@ -25,17 +28,11 @@
             <th>Genero</th>
             <th></th>
             <th></th>
-            <th></th> 
+            <th></th>
           </tr>
         </thead>
-        <tbody id = "tableSongBody">
-          
-        </tbody>
+        <tbody id="tableSongBody"></tbody>
       </table>
-
-    </div>
-    <div id = "divDetalles">
-
     </div>
     <script src="./js/app.js"></script>
   </body>

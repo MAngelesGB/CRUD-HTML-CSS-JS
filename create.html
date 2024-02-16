@@ -4,31 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./js/song.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
     <title>Document</title>
   </head>
   <body>
-    <div>
-      <form>
-        <legend>Ingresa un registro</legend> 
+    <form class="formCreate">
+      <legend>Ingresa un registro</legend> 
 
-        <label for="name">Nombre</label>
-        <input type="text" id="txtName" name="name" required>
+      <label for="name">Nombre</label>
+      <input type="text" id="txtName" name="name" required>
 
-        <label for="artist">Artista</label>
-        <input type="text" id="txtArtist" name="artist" required>
+      <label for="artist">Artista</label>
+      <input type="text" id="txtArtist" name="artist" required>
 
-        <label for="album">Album</label>
-        <input type="album" id="txtAlbum" name="album" required>
+      <label for="album">Album</label>
+      <input type="text" id="txtAlbum" name="album" required>
 
-        <label for="genre">Genero</label>
-        <input type="genre" id="txtGenre" name="genre" required>
+      <label for="genre">Genero</label>
+      <input type="text" id="txtGenre" name="genre" required>
 
-        <br>
+      <br>
 
-        <input type = "button" id="btnAdd" value = "Agregar">
-      </form> 
-      <a href="./index.html">Inicio</a>
-    </div>
+      <input type = "button" id="btnAdd" value = "Agregar">
+      <a class="button" href="./index.html">Inicio</a>
+    </form> 
     <div id = "divDetalles">
 
     </div>
